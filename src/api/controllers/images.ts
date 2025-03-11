@@ -17,6 +17,7 @@ const MODEL_MAP = {
   "jimeng-xl-pro": "text2img_xl_sft",
 };
 
+const WEB_ID = Math.random() * 999999999999999999 + 7000000000000000000;
 export function getModel(model: string) {
   return MODEL_MAP[model] || MODEL_MAP[DEFAULT_MODEL];
 }
@@ -132,6 +133,12 @@ export async function generateImages(
   while (status === 20) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const result = await request("post", "/mweb/v1/get_history_by_ids", refreshToken, {
+      params: {
+        aid: Number(DEFAULT_ASSISTANT_ID),
+        device_platform:"web",
+        region:"KR",
+        web_id:WEB_ID
+      },
       data: {
         history_ids: [historyId],
         image_info: {
