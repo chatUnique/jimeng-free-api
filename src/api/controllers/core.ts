@@ -352,20 +352,20 @@ export function tokenSplit(authorization: string) {
  * 获取Token存活状态
  */
 export async function getTokenLiveStatus(refreshToken: string) {
-  const result = await token_request(
-    "POST",
-    "/passport/account/info/v2",
-    refreshToken,
-    {
-      params: {
-        account_sdk_source: "web",
-      },
-    }
-  );
-  try {
-    const { user_id } = checkResult(result);
-    return !!user_id;
-  } catch (err) {
-    return false;
-  }
+  // const result = await token_request(
+  //   "POST",
+  //   "/passport/account/info/v2",
+  //   refreshToken,
+  //   {
+  //     params: {
+  //       account_sdk_source: "web",
+  //     },
+  //   }
+  // );
+  // try {
+  //   const { user_id } = checkResult(result);
+  //   return !!user_id;
+  // } catch (err) {
+  //   return false;
+  // }
 }
