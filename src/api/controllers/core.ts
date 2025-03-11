@@ -326,11 +326,7 @@ export async function uploadFile(
  */
 export function checkResult(result: AxiosResponse) {
   const { ret, errmsg, data } = result.data;
-  if (!_.isFinite(Number(ret))) return result.data;
-  if (ret === '0') return data;
-  if (ret === '5000')
-    throw new APIException(EX.API_IMAGE_GENERATION_INSUFFICIENT_POINTS, `[无法生成图像]: 即梦积分可能不足，${errmsg}`);
-  throw new APIException(EX.API_REQUEST_FAILED, `[请求jimeng失败]: ${errmsg}`);
+  return data;
 }
 
 /**
