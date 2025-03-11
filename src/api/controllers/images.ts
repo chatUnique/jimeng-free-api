@@ -126,6 +126,8 @@ export async function generateImages(
       },
     }
   );
+  logger.info(aigc_data);
+  
   const historyId = aigc_data.history_record_id;
   if (!historyId)
     throw new APIException(EX.API_IMAGE_GENERATION_FAILED, "记录ID不存在");
